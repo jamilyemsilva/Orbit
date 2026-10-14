@@ -3,69 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Home · Orbit</title>
 </head>
 <body>
+
     <header class="cabecalho">
         <nav class="navegacao">
-            <img src="..." alt="icon">
-            <a href="home.html">Início</a>
-            <a href="galeria.html">Galeria</a>
-            <a href="reviews.html">Reviews</a>
-            <a href="musicas.html">Músicas</a>
-            <a href="estudos.html">Estudos</a>
-            <a href="anotacoes.html">Anotações</a>
-            <a href="calendario.html">Calendário</a>
+            <a class="logo" href="home.html">
+                <img src="assets/img/..." alt="Orbit - página inicial">
+            </a>
+            <button type="button" class="menu-principal" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+            <ul id="menu-principal">
+                <li><a href="home.html" aria-current="page">Início</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="musicas.html">Músicas</a></li>
+                <li><a href="estudos.html">Estudos</a></li>
+                <li><a href="anotacoes.html">Anotações</a></li>
+                <li><a href="calendario.html">Calendário</a></li>
+            </ul>
         </nav>
-        <h1>Orbit</h1>
-        <p>Um universo só seu, no seu próprio tempo</p>
+        <p class="titulo-site">Orbit</p>
+        <p class="slogan">Um universo só seu, no seu próprio tempo</p>
     </header>
 
-    <main class="principal">
+    <main id="conteudo" class="principal">
         <section class="card-content">
-            <h2>Sinta-se em casa</h2>
+            <h1 id="titulo-home">Sinta-se em casa</h1>
             <p>
                 Cada pessoa tem sua própria órbita, formada por gostos, pensamentos, 
                 memórias e descobertas. O Orbit nasce para dar espaço a tudo isso. 
                 Um lugar onde suas ideias podem circular livremente e cada pequeno 
                 registro encontra seu lugar no universo que é só seu.
             </p>
-            <input type="text" id="pub">
-            <input type="button" value="Publicar">
-
+            <form method="post">
+                <label for="pub">O que você quer publicar hoje?</label>
+                <textarea id="pub" name="publicacao"></textarea>
+                <button type="submit">Publicar</button>
+            </form>
         </section>
 
         <section class="carousel">
-            <section class="card">
-                <img src="..." alt="">
-                <a href="galeria.html">Galeria</a>
-            </section>
-            <section class="card">
-                <img src="..." alt="">
-                <a href="reviews.html">Reviews</a>
-            </section>
-            <section class="card">
-                <img src="..." alt="">
-                <a href="musicas.html">Músicas</a>
-            </section>
-            <section class="card">
-                <img src="..." alt="">
-                <a href="estudos.html">Estudos</a>
-            </section>
-            <section class="card">
-                <img src="..." alt="">
-                <a href="anotacoes.html">Anotações</a>
-            </section>
-            <section class="card">
-                <img src="..." alt="">
+            <h2>Explore o Orbit</h2>
+            <ul class="carousel-lista">
+                <li class="card">
+                    <img src="assets/img/..." alt="pagina da galeria">
+                    <a href="galeria.html">Galeria</a>
+                </li>
+                <li class="card">
+                    <img src="assets/img/..." alt="pagina das reviews">
+                    <a href="reviews.html">Reviews</a>
+                </li>
+                <li class="card">
+                    <img src="assets/img/..." alt="pagina das musicas">
+                    <a href="musicas.html">Músicas</a>
+                </li>
+                <li class="card">
+                    <img src="assets/img/..." alt="pagina de estudos">
+                    <a href="estudos.html">Estudos</a>
+                </li>
+                <li class="card">
+                    <img src="assets/img/..." alt="pagina de anotacoes">
+                    <a href="anotacoes.html">Anotações</a>
+                </li>
+                <li class="card">
+                    <img src="assets/img/..." alt="pagina de calendario">
                 <a href="calendario.html">Calendário</a>
-            </section>
+                </li>
+            </ul>
+           <button type="button" class="carousel-proximo">&rsaquo;</button>
         </section>
     </main>
 
-    <footer>
+    <footer class="rodape">
         <p>Um espaço que orbita em você, então seja mais você</p>
-        <p>J.pyter</p>
+        <p><small>&copy; Jpyter</small></p>
     </footer>
 </body>
 </html>

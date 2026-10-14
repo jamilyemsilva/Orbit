@@ -7,31 +7,53 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
+  <!-- cabeçalho -->
   <header class="cabecalho">
-        <nav class="navegacao">
-            <img src="..." alt="icon">
-            <ul>
-              <li><a href="home.html">Início</a></li>
+      <nav class="navegacao">
+          <a class="logo" href="home.html">
+              <img src="assets/img/..." alt="Orbit - página inicial">
+          </a>
+          <button type="button" class="menu-principal" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+          <ul id="menu-principal">
+              <li><a href="home.html" aria-current="page">Início</a></li>
               <li><a href="galeria.html">Galeria</a></li>
               <li><a href="reviews.html">Reviews</a></li>
               <li><a href="musicas.html">Músicas</a></li>
               <li><a href="estudos.html">Estudos</a></li>
               <li><a href="anotacoes.html">Anotações</a></li>
               <li><a href="calendario.html">Calendário</a></li>
-            </ul>    
-        </nav>
-        <h1>Orbit</h1>
-        <p>Um universo só seu, no seu próprio tempo</p>
-    </header>
+          </ul>
+      </nav>
+      <p class="titulo-site">Orbit</p>
+      <p class="slogan">Um universo só seu, no seu próprio tempo</p>
+  </header>
 
-  <main>
+  <main id="conteudo">
     <section id="galeria">
-      <h2>Galeria</h2>
-      <button type="submit">Criar novo Album</button>
-      <button type="submit">Nova foto</button>
+      <h1 id="titulo-galeria">Galeria</h1>
+      <div class="acoes">
+        <button type="button" data-abrir-modal="modal-album">Criar novo Album</button>
+        <button type="button" data-abrir-modal="modal-foto">Nova foto</button>
+      </div>
+
+      <section class="albuns">
+        <h2 id="titulo-albuns">Álbuns</h2>
+        <ul>
+          <!-- para cada album um li -->
+          <li>
+            <article>
+              <a href="galeria-album.html">
+                <img src="assets/img/..." alt="Capa album inicial generico">
+                <h3>Noites frias, vinho e jazz</h3>
+              </a>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+<!-- REVISAOD ATÉ AQUI -->
       <section class="photos">
-      fotos e albuns de fotos aqui
+
       </section>
     </section>
 

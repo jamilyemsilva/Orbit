@@ -6,55 +6,48 @@
   <title>Sing-in</title>
 </head>
 <body>
-  <main>
+  <main id="conteudo">
+
     <section class="login" id="login">
       <h1>Área de Login</h1>
-      <section class="formulario">
-        <form action="" method="post">
+      <div class="formulario">
+        <form method="post">
           <h2>Informe seus dados</h2>
-          <p>
-            <label for="user-email">Username ou Email:</label>
+          <div class="campo">
+            <label for="user-email">Username ou e-mail:</label>
             <input type="text" id="user-email" name="user-email" required>
-          </p>
-          <p>
+          </div>
+          <div class="campo">
             <label for="password">Senha:</label>
             <input type="text" id="password" name="password" required>
-          </p>
-          <p>
-            <a href="home.html" class="button">Entrar</a>
-          </p>
-          <p>
-            <a href="#cadastro">Não possuo cadastro</a>
-          </p>
+          </div>
+          <button type="submit">Entrar</button>
         </form>
-      </section>
+        <p><a href="#cadastro">Não possuo Cadastro</a></p>
+      </div>
     </section>
 
     <section class="cadastro" id="cadastro">
       <h1>Área de Cadastro</h1>
-      <section class="formulario">
-        <form action="" method="post">
+      <div class="formulario">
+        <form method="post">
           <h2>Informe seus dados</h2>
-          <p>
+          <div class="campo">
             <label for="user">Username:</label>
             <input type="text" id="user" name="user" required>
-          </p>
-          <p>
+          </div>
+          <div class="campo">
             <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
-          </p>
-          <p>
+            <input type="email" id="email" name="email" required> 
+          </div>
+          <div class="campo">
             <label for="password-n">Senha:</label>
             <input type="text" id="password-n" name="password" required>
-          </p>
-          <p>
-            <a href="home.html" class="button">Cadastrar-se</a>
-          </p>
-          <p>
-            <a href="#login">Já possuo conta</a>
-          </p>
+          </div>
+          <button type="submit">Cadastrar-se</button>
         </form>
-      </section>
+          <p><a href="#login">Já possuo conta</a></p>
+      </div>
     </section>
   </main>
 </body>

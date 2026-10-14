@@ -8,45 +8,127 @@
 </head>
 <body>
 
-  <header>
-    <a href="index.html">Jpyter</a>
-    <nav aria-label="Principal">
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="galeria.html" aria-current="page">Galeria</a></li>
-        <li><a href="reviews.html">Reviews</a></li>
-        <li><a href="musicas.html">Músicas</a></li>
-        <li><a href="estudos.html">Estudos</a></li>
-        <li><a href="anotacoes.html">Anotações</a></li>
-        <li><a href="calendario.html">Calendário</a></li>
-      </ul>
-    </nav>
-  </header>
+  <header class="cabecalho">
+        <nav class="navegacao">
+            <img src="..." alt="icon">
+            <ul>
+              <li><a href="home.html">Início</a></li>
+              <li><a href="galeria.html">Galeria</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+              <li><a href="musicas.html">Músicas</a></li>
+              <li><a href="estudos.html">Estudos</a></li>
+              <li><a href="anotacoes.html">Anotações</a></li>
+              <li><a href="calendario.html">Calendário</a></li>
+            </ul>    
+        </nav>
+        <h1>Orbit</h1>
+        <p>Um universo só seu, no seu próprio tempo</p>
+    </header>
 
   <main>
     <section id="galeria">
-      <h1>Galeria</h1>
-      <button>Novo álbum</button>
-      <article>
-        <h2>Nome do álbum</h2>
-        <p>Descrição</p>
-        <button>Entrar</button> <button>Excluir</button>
-        <figure><img src="img/" alt=""><figcaption>Descrição · data</figcaption></figure>
-        <button>Nova foto</button> <button>Editar foto</button> <button>Mover foto</button>
-      </article>
-      <form id="upload-foto">
-        <input type="file" name="foto">
-        <input type="text" name="descricao">
-        <input type="date" name="data">
-        <select name="album"></select>
-        <select name="musica"></select>
-        <button type="submit">Postar</button>
-      </form>
+      <h2>Galeria</h2>
+      <button type="submit">Criar novo Album</button>
+      <button type="submit">Nova foto</button>
+      <section class="photos">
+      fotos e albuns de fotos aqui
+      </section>
     </section>
+
+    <!-- Modal Foto -->
+    <div class="modal" id="modal-foto" hidden>
+      <header class="modal-cabecalho">
+        <h2>Adicionar foto</h2>
+        <p>
+            Adicione uma foto e associe-a a um álbum
+            da sua galeria.
+        </p>
+        <button
+            type="submit"
+            class="modal-fechar"
+            aria-label="Fechar janela"
+            data-fechar-modal="modal-foto"
+        >
+          &times;
+        </button>
+      </header>
+
+      <form action="" method="post" id="form-foto">
+        <label for="buscar-album">
+          Buscar álbum
+        </label>
+        <input
+            type="search"
+            id="buscar-album"
+            placeholder="Pesquisar álbuns..."
+        >
+        <label for="album-selecionado">
+          Selecione um álbum:
+        </label>
+        <select
+            id="album-selecionado"
+            name="album"
+            required
+        >
+        <option value="">
+          Escolha um álbum
+        </option>
+      </select>
+      <p>
+        <label for="photo">Adicione uma capa:</label>
+        <input type="file" name="photo" id="photo">
+      </p>
+        <p>
+          <label for="descricao">Descricao de Foto:</label>
+          <input type="text" id="descricao" name="descricao">
+        </p>
+        <button type="submit"> Adicionar nova foto</button>
+      </form>
+    </div>
+
+    <!-- Modal Album -->
+    <div class="modal" id="modal-album" hidden>
+      <header class="modal-cabecalho">
+        <h2>Criar Novo album</h2>
+        <p>
+          Crie um espaço para reunir suas fotos
+          e guardar seus momentos.
+        </p>
+        <button
+            type="submit"
+            class="modal-fechar"
+            aria-label="Fechar janela"
+            data-fechar-modal="modal-foto"
+        >
+          &times;
+        </button>
+      </header>
+
+      <form action="" method="post" id="form-album">
+        <label for="name-album">
+          Nome do Album
+        </label>
+        <input
+            type="text"
+            id="name-album"
+            placeholder="Adicione um nome ao album"
+        >
+      <p>
+        <label for="photo-a">Adicione uma capa ao album:</label>
+        <input type="file" name="photo" id="photo-a">
+      </p>
+        <p>
+          <label for="descricao-a">Descricao de Album:</label>
+          <input type="text" id="descricao-a" name="descricao">
+        </p>
+        <button type="submit"> Adicionar novo album</button>
+      </form>
+    </div>
   </main>
-
-  <footer><p>Jpyter</p></footer>
-
-  <script src="js/main.js"></script>
+  
+  <footer>
+      <p>Um espaço que orbita em você, então seja mais você</p>
+      <p>J.pyter</p>
+  </footer>
 </body>
 </html>

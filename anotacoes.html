@@ -7,38 +7,72 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <header>
-    <a href="index.html">Jpyter</a>
-    <nav aria-label="Principal">
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="galeria.html">Galeria</a></li>
-        <li><a href="reviews.html">Reviews</a></li>
-        <li><a href="musicas.html">Músicas</a></li>
-        <li><a href="estudos.html">Estudos</a></li>
-        <li><a href="anotacoes.html" aria-current="page">Anotações</a></li>
-        <li><a href="calendario.html">Calendário</a></li>
-      </ul>
-    </nav>
+  <header class="cabecalho">
+      <nav class="navegacao">
+          <img src="..." alt="icon">
+          <ul>
+            <li><a href="home.html">Início</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="musicas.html">Músicas</a></li>
+            <li><a href="estudos.html">Estudos</a></li>
+            <li><a href="anotacoes.html">Anotações</a></li>
+            <li><a href="calendario.html">Calendário</a></li>
+          </ul>    
+      </nav>
+      <h1>Orbit</h1>
+      <p>Um universo só seu, no seu próprio tempo</p>
   </header>
 
   <main>
-    <section id="anotacoes">
-      <h1>Anotações</h1>
-      <form id="novo-post">
-        <input type="text" name="titulo">
-        <input type="file" name="capa">
-        <textarea name="descricao"></textarea>
-        <input type="date" name="data">
-        <button type="submit">Publicar</button>
-      </form>
-      <article><h2>Título</h2><time datetime="">Data</time><p>Descrição</p><button>Editar</button> <button>Excluir</button></article>
+    <section id="reviews">
+      <h2>Anotações</h2>
+      <button type="submit" class="nova-anotacao">Nova anotação</button>
+      <p>tantan anotacoes</p>
+      <ul>
+        <li>
+          <article>
+            <h2>Nome</h2>
+            <time datetime="">Data</time>
+            <p>Descrição</p>
+          </article>
+        </li>
+      </ul>
     </section>
   </main>
 
-  <footer><p>Jpyter</p></footer>
+  <!-- Nova Anotação -->
+   <div class="modal" id="modal-anotacao" hidden>
+    <header class="modal-cabecalho">
+        <h2>Adicione uma nova anotação</h2>
+        <button
+            type="submit"
+            class="modal-fechar"
+            aria-label="Fechar janela"
+            data-fechar-modal="modal-foto"
+        >
+          &times;
+        </button>
+      </header>
 
-  <script src="js/main.js"></script>
+      <form action="" method="post" id="form-anotacao">
+        <p>
+          <label for="n-anotacao">Titulo:</label>
+          <input type="text" name="n-anotacao" id="n-anotacao">
+        </p>
+        <p>
+          <label for="descricao">Descricao</label>
+          <input type="text" id="descricao" name="descricao">
+          <input type="file" name="arquivo" id="arquivo">
+        </p>
+        <button type="submit"> Adicionar nova anotacao</button>
+      </form>
+  </div>
+
+  <footer>
+      <p>Um espaço que orbita em você, então seja mais você</p>
+      <p>J.pyter</p>
+  </footer>
+
 </body>
 </html>

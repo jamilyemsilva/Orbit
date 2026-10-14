@@ -8,37 +8,95 @@
 </head>
 <body>
 
-  <header>
-    <a href="index.html">Jpyter</a>
-    <nav aria-label="Principal">
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="galeria.html">Galeria</a></li>
-        <li><a href="reviews.html" aria-current="page">Reviews</a></li>
-        <li><a href="musicas.html">Músicas</a></li>
-        <li><a href="estudos.html">Estudos</a></li>
-        <li><a href="anotacoes.html">Anotações</a></li>
-        <li><a href="calendario.html">Calendário</a></li>
-      </ul>
-    </nav>
+  <header class="cabecalho">
+      <nav class="navegacao">
+          <img src="..." alt="icon">
+          <ul>
+            <li><a href="home.html">Início</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="musicas.html">Músicas</a></li>
+            <li><a href="estudos.html">Estudos</a></li>
+            <li><a href="anotacoes.html">Anotações</a></li>
+            <li><a href="calendario.html">Calendário</a></li>
+          </ul>    
+      </nav>
+      <h1>Orbit</h1>
+      <p>Um universo só seu, no seu próprio tempo</p>
   </header>
 
   <main>
     <section id="reviews">
-      <h1>Reviews</h1>
+      <h1>Reviews - Todas </h1>
       <nav aria-label="Filtro">
         <button>Tudo</button> <button>Livros</button> <button>Filmes/Séries</button>
       </nav>
-      <button>Nova review</button>
-      <article>
-        <h2>Nome</h2><p>Detalhes</p><p>Avaliação</p>
-        <button>Editar</button> <button>Excluir</button>
-      </article>
+      <ul>
+        <li>
+          <article>
+            <img src="..." alt="">
+            <h2>Nome</h2><p>Detalhes</p><p>Avaliação</p>
+            <button>Editar</button> <button>Excluir</button>
+          </article>
+        </li>
+      </ul>
     </section>
   </main>
 
-  <footer><p>Jpyter</p></footer>
+  <div class="modal" id="modal-review" hidden>
+      <header class="modal-cabecalho">
+        <h2>Adicione nova Review</h2>
+        <p>
+            apresente sua crítica
+        </p>
+        <button
+            type="submit"
+            class="modal-fechar"
+            aria-label="Fechar janela"
+            data-fechar-modal="modal-foto"
+        >
+          &times;
+        </button>
+      </header>
 
-  <script src="js/main.js"></script>
+      <form action="" method="post" id="form-review">
+        <label for="capa-review">Adicione uma capa:</label>
+        <input type="file" name="capa-review" id="capa-review"> 
+        <p>
+          <label for="titulo">Adicione um titulo:</label>
+          <input type="text" name="titulo" id="titulo">
+        </p>
+        <label for="tipo-review">
+          Selecione o tipo de review:
+        </label>
+        <select
+            id="tipo-review"
+            name="tipo-review"
+            required
+        >
+          <option value="">
+            Filme
+          </option>
+          <option value="">
+            Série
+          </option>
+        </select>
+        <p>
+          <label for="avaliacao">Avaliação de filme ou serie</label>
+          <input type="number" id="avaliacao" name="avaliacao">
+        </p>
+        <p>
+          <label for="descricao">Descricao de Foto:</label>
+          <input type="text" id="descricao" name="descricao">
+        </p>
+        <button type="submit"> Adicionar nova review</button>
+      </form>
+    </div>
+
+  <footer>
+      <p>Um espaço que orbita em você, então seja mais você</p>
+      <p>J.pyter</p>
+  </footer>
+
 </body>
 </html>

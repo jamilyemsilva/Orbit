@@ -7,36 +7,117 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <header>
-    <a href="index.html">Jpyter</a>
-    <nav aria-label="Principal">
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="galeria.html">Galeria</a></li>
-        <li><a href="reviews.html">Reviews</a></li>
-        <li><a href="musicas.html">Músicas</a></li>
-        <li><a href="estudos.html" aria-current="page">Estudos</a></li>
-        <li><a href="anotacoes.html">Anotações</a></li>
-        <li><a href="calendario.html">Calendário</a></li>
-      </ul>
-    </nav>
+  <header class="cabecalho">
+      <nav class="navegacao">
+          <img src="..." alt="icon">
+          <ul>
+            <li><a href="home.html">Início</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="musicas.html">Músicas</a></li>
+            <li><a href="estudos.html">Estudos</a></li>
+            <li><a href="anotacoes.html">Anotações</a></li>
+            <li><a href="calendario.html">Calendário</a></li>
+          </ul>    
+      </nav>
+      <h1>Orbit</h1>
+      <p>Um universo só seu, no seu próprio tempo</p>
   </header>
 
   <main>
-    <section id="estudos">
+    <section class="estudos">
       <h1>Estudos</h1>
-      <button>Novo módulo</button>
-      <article>
-        <h2>Título do módulo</h2><img src="img/" alt="Capa"><p>Descrição</p>
-        <button>Editar</button> <button>Excluir módulo</button>
-        <ul><li>Aprendizado <button>Excluir</button></li></ul>
-        <button>Novo aprendizado</button>
-      </article>
+      <button type="submit">Novo módulo</button>
+      <p>tantos modulos</p>
+      <ul>
+        <li>
+          <article>
+            <img src="img/" alt="Capa">
+            <h2>Título do módulo</h2>
+            <p>Descrição</p>
+            <button>Entrar em modulo</button>
+          </article>
+        </li>
+      </ul>
     </section>
   </main>
 
-  <footer><p>Jpyter</p></footer>
+  <!-- Novo modulo -->
+  <div class="modal" id="modal-modulo" hidden>
+    <header class="modal-cabecalho">
+      <h2>Adicione um novo modulo</h2>
+      <button
+          type="submit"
+          class="modal-fechar"
+      >
+        &times;
+      </button>
+    </header>
+
+    <form action="" method="post" id="form-modulo">
+      <label for="capa-modulo">Adicione uma capa ao seu modulo:</label>
+      <input type="file" name="capa-modulo" id="capa-modulo"> 
+      <p>
+        <label for="n-modulo">Nome do modulo:</label>
+        <input type="text" name="modulo" id="n-modulo">
+      </p>
+      <p>
+        <label for="descricao-m">Descricao do modulo:</label>
+        <input type="text" id="descricao-m" name="descricao-m">
+      </p>
+      <button type="submit"> Adicionar novo modulo</button>
+    </form>
+  </div>
+
+  <div class="modal" id="modal-list-conteudos" hidden>
+    <header class="modal-cabecalho">
+      <h2>modulo "nome do modulo"</h2>
+      <button
+          type="submit"
+          class="modal-voltar"
+      >
+        &backcong;;
+      </button>
+    </header>
+    <main class="list-documentos">
+      <h2>Album tal</h2>
+      <ul>
+        <ul>
+          <li>
+            <article>
+              <img src="img/" alt="Capa">
+              <h2>Título do módulo</h2>
+              <p>Descrição</p>
+              <button>Entrar em modulo</button>
+            </article>
+          </li>
+        </ul>
+        <li>arquivo 1</li>
+      </ul>
+    </main>
+  </div>
+
+  <div class="modal" id="modal-conteudo-modulo" hidden>
+    <header class="modal-cabecalho">
+      <h2>Documento tal</h2>
+      <button
+          type="submit"
+          class="modal-fechar"
+      >
+        &times;
+      </button>
+    </header>
+    <article>
+        <h2>Nome</h2>
+        <img src="..." alt="">
+        <p>Detalhes</p>
+      </article>
+  </div>
+
+  <footer>
+      <p>Um espaço que orbita em você, então seja mais você</p>
+      <p>J.pyter</p>
+  </footer>
 
   <script src="js/main.js"></script>
 </body>

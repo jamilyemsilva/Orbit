@@ -7,35 +7,139 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <header>
-    <a href="index.html">Jpyter</a>
-    <nav aria-label="Principal">
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="galeria.html">Galeria</a></li>
-        <li><a href="reviews.html">Reviews</a></li>
-        <li><a href="musicas.html" aria-current="page">Músicas</a></li>
-        <li><a href="estudos.html">Estudos</a></li>
-        <li><a href="anotacoes.html">Anotações</a></li>
-        <li><a href="calendario.html">Calendário</a></li>
-      </ul>
-    </nav>
+  <header class="cabecalho">
+      <nav class="navegacao">
+          <img src="..." alt="icon">
+          <ul>
+            <li><a href="home.html">Início</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="musicas.html">Músicas</a></li>
+            <li><a href="estudos.html">Estudos</a></li>
+            <li><a href="anotacoes.html">Anotações</a></li>
+            <li><a href="calendario.html">Calendário</a></li>
+          </ul>    
+      </nav>
+      <h1>Orbit</h1>
+      <p>Um universo só seu, no seu próprio tempo</p>
   </header>
 
   <main>
     <section id="musicas">
-      <h1>Músicas</h1>
-      <button>Nova música</button>
-      <article>
-        <img src="img/" alt="Capa"><h2>Nome</h2><p>Descrição</p><p>Avaliação</p>
-        <button>Editar</button> <button>Excluir</button>
-      </article>
-      <aside><h2>Sugestões</h2></aside>
+      <h2>Músicas</h2>
+      <button type="submit">Nova música</button>
+      <button type="submit">Novo album</button>
+
+      <section class="banner-musica">
+        top atual das musicas ouvidas
+      </section>
+      <h2>Seus albuns de música</h2>
+      <section class="albuns-musica">
+        <img src="img/" alt="Capa">
+        <h3>Nome</h3>
+        <button type="submit">play</button>
+      </section>
     </section>
   </main>
 
-  <footer><p>Jpyter</p></footer>
+  <!-- Nova Musica -->
+  <div class="modal" id="modal-musica" hidden>
+    <header class="modal-cabecalho">
+        <h2>Adicione nova música</h2>
+        <button
+            type="submit"
+            class="modal-fechar"
+            aria-label="Fechar janela"
+            data-fechar-modal="modal-foto"
+        >
+          &times;
+        </button>
+      </header>
+
+      <form action="" method="post" id="form-musica">
+        <label for="capa-musica">Adicione uma capa a sua musica:</label>
+        <input type="file" name="capa-musica" id="capa-musica"> 
+        <p>
+          <label for="n-musica">Nome da música:</label>
+          <input type="text" name="n-musica" id="n-musica">
+        </p>
+        <p>
+          <label for="avaliacao">Avaliação de filme ou serie</label>
+          <input type="number" id="avaliacao" name="avaliacao">
+        </p>
+        <label for="tipo-album">
+          Selecione para qual album você deseja envia-la:
+        </label>
+        <select
+            id="tipo-album"
+            name="tipo-album"
+            required
+        >
+          <option value="">
+            em aberto
+          </option>
+        </select>
+        <p>
+          <label for="descricao">Descricao da música:</label>
+          <input type="text" id="descricao" name="descricao">
+        </p>
+        <button type="submit"> Adicionar nova musica ao album</button>
+      </form>
+  </div>
+
+
+  <!-- Novo album -->
+  <div class="modal" id="modal-album-musica" hidden>
+    <header class="modal-cabecalho">
+      <h2>Adicione um novo album</h2>
+      <button
+          type="submit"
+          class="modal-fechar"
+          aria-label="Fechar janela"
+          data-fechar-modal="modal-foto"
+      >
+        &times;
+      </button>
+    </header>
+
+    <form action="" method="post" id="form-album">
+      <label for="capa-album">Adicione uma capa ao seu album:</label>
+      <input type="file" name="capa-album" id="capa-album"> 
+      <p>
+        <label for="n-album">Nome do album:</label>
+        <input type="text" name="n-album" id="n-album">
+      </p>
+      <p>
+        <label for="descricao-a">Descricao do album:</label>
+        <input type="text" id="descricao-a" name="descricao-a">
+      </p>
+      <button type="submit"> Adicionar novo album</button>
+    </form>
+  </div>
+
+  <!-- Lista de musicas no album -->
+  <div class="modal" id="modal-list-musica" hidden>
+    <header class="modal-cabecalho">
+      <h2>Album "nome do album"</h2>
+      <button
+          type="submit"
+          class="modal-voltar"
+      >
+        &backcong;;
+      </button>
+    </header>
+    <main class="list-musica">
+      <h2>Album tal</h2>
+      <ul>
+        <li>musicas</li>
+      </ul>
+    </main>
+  </div>
+
+  <footer>
+      <p>Um espaço que orbita em você, então seja mais você</p>
+      <p>J.pyter</p>
+  </footer>
 
   <script src="js/main.js"></script>
 </body>

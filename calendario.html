@@ -8,31 +8,33 @@
 </head>
 <body>
 
-  <header>
-    <a href="index.html">Jpyter</a>
-    <nav aria-label="Principal">
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="galeria.html">Galeria</a></li>
-        <li><a href="reviews.html">Reviews</a></li>
-        <li><a href="musicas.html">Músicas</a></li>
-        <li><a href="estudos.html">Estudos</a></li>
-        <li><a href="anotacoes.html">Anotações</a></li>
-        <li><a href="calendario.html" aria-current="page">Calendário</a></li>
-      </ul>
-    </nav>
+ <header class="cabecalho">
+      <nav class="navegacao">
+          <img src="..." alt="icon">
+          <ul>
+            <li><a href="home.html">Início</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="musicas.html">Músicas</a></li>
+            <li><a href="estudos.html">Estudos</a></li>
+            <li><a href="anotacoes.html">Anotações</a></li>
+            <li><a href="calendario.html">Calendário</a></li>
+          </ul>    
+      </nav>
+      <h1>Orbit</h1>
+      <p>Um universo só seu, no seu próprio tempo</p>
   </header>
 
   <main>
     <section id="calendario">
-      <h1>Calendário</h1>
-      <nav aria-label="Visualização">
-        <button>Diário</button> <button>Semanal</button> <button>Mensal</button>
-      </nav>
-      <table>
-        <thead><tr><th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th></tr></thead>
-        <tbody></tbody>
-      </table>
+      <h2>Calendário</h2>
+      <button>Diário</button> <button>Semanal</button> <button>Mensal</button>
+      <section id="card-eventos">
+        <table>
+          <thead><tr><th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
       <form id="evento">
         <input type="date" name="data">
         <input type="text" name="titulo">
@@ -43,8 +45,10 @@
     </section>
   </main>
 
-  <footer><p>Jpyter</p></footer>
+  <footer>
+      <p>Um espaço que orbita em você, então seja mais você</p>
+      <p>J.pyter</p>
+  </footer>
 
-  <script src="js/main.js"></script>
 </body>
 </html>

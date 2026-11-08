@@ -1,156 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Galeria · Jpyter</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria · Orbit</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-  <!-- cabeçalho -->
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
   <header class="cabecalho">
-      <nav class="navegacao">
-          <a class="logo" href="home.html">
-              <img src="assets/img/..." alt="Orbit - página inicial">
-          </a>
-          <button type="button" class="menu-principal" aria-expanded="false" aria-controls="menu-principal">Menu</button>
-          <ul id="menu-principal">
-              <li><a href="home.html" aria-current="page">Início</a></li>
-              <li><a href="galeria.html">Galeria</a></li>
-              <li><a href="reviews.html">Reviews</a></li>
-              <li><a href="musicas.html">Músicas</a></li>
-              <li><a href="estudos.html">Estudos</a></li>
-              <li><a href="anotacoes.html">Anotações</a></li>
-              <li><a href="calendario.html">Calendário</a></li>
-          </ul>
-      </nav>
-      <p class="titulo-site">Orbit</p>
-      <p class="slogan">Um universo só seu, no seu próprio tempo</p>
+    <nav class="navegacao" aria-label="Principal">
+      <a class="logo" href="home.html">
+        <img src="assets/img/logo.svg" alt="Orbit - página inicial">
+      </a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+      <ul id="menu-principal">
+        <li><a href="home.html">Início</a></li>
+        <li><a href="galeria.html" aria-current="page">Galeria</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="musicas.html">Músicas</a></li>
+        <li><a href="estudos.html">Estudos</a></li>
+        <li><a href="anotacoes.html">Anotações</a></li>
+        <li><a href="calendario.html">Calendário</a></li>
+      </ul>
+    </nav>
+    <p class="titulo-site">Orbit</p>
+    <p class="slogan">Um universo só seu, no seu próprio tempo</p>
   </header>
 
   <main id="conteudo">
-    <section id="galeria">
+    <section id="galeria" aria-labelledby="titulo-galeria">
       <h1 id="titulo-galeria">Galeria</h1>
       <div class="acoes">
-        <button type="button" data-abrir-modal="modal-album">Criar novo Album</button>
+        <button type="button" data-abrir-modal="modal-album">Criar novo álbum</button>
         <button type="button" data-abrir-modal="modal-foto">Nova foto</button>
       </div>
 
-      <section class="albuns">
+      <section class="albuns" aria-labelledby="titulo-albuns">
         <h2 id="titulo-albuns">Álbuns</h2>
+      <form class="barra-ferramentas" role="search" aria-label="Pesquisar e ordenar álbuns">
+        <div class="campo campo-busca">
+          <label for="busca-galeria">Pesquisar</label>
+          <input type="search" id="busca-galeria" name="busca" placeholder="Digite para buscar...">
+        </div>
+        <div class="campo">
+          <label for="ordem-galeria">Ordenar por</label>
+          <select id="ordem-galeria" name="ordem"><option>Mais recentes</option><option>Nome (A–Z)</option></select>
+        </div>
+      </form>
+      <p class="resultado" role="status">Exibindo 1 item</p>
+      <p class="mensagem mensagem-vazio" hidden>Nenhum resultado encontrado. Tente outro termo de busca.</p>
         <ul>
-          <!-- para cada album um li -->
+          <!-- repita o <li> para cada álbum -->
           <li>
             <article>
               <a href="galeria-album.html">
-                <img src="assets/img/..." alt="Capa album inicial generico">
+                <img src="assets/img/placeholder.svg" alt="Capa do álbum Noites frias, vinho e jazz">
                 <h3>Noites frias, vinho e jazz</h3>
               </a>
+              <div class="acoes">
+              <button type="button" class="btn-secundario">Editar</button>
+              <button type="button" class="btn-perigo">Excluir</button>
+            </div>
             </article>
           </li>
         </ul>
       </section>
 
 <!-- REVISAOD ATÉ AQUI -->
-      <section class="photos">
-
+      <section class="photos" aria-labelledby="titulo-fotos">
+        <h2 id="titulo-fotos">Fotos</h2>
+        <ul>
+          <!-- repita o <li> para cada foto -->
+          <li><img src="assets/img/placeholder.svg" alt="Descrição da foto"></li>
+        </ul>
       </section>
     </section>
-
-    <!-- Modal Foto -->
-    <div class="modal" id="modal-foto" hidden>
-      <header class="modal-cabecalho">
-        <h2>Adicionar foto</h2>
-        <p>
-            Adicione uma foto e associe-a a um álbum
-            da sua galeria.
-        </p>
-        <button
-            type="submit"
-            class="modal-fechar"
-            aria-label="Fechar janela"
-            data-fechar-modal="modal-foto"
-        >
-          &times;
-        </button>
-      </header>
-
-      <form action="" method="post" id="form-foto">
-        <label for="buscar-album">
-          Buscar álbum
-        </label>
-        <input
-            type="search"
-            id="buscar-album"
-            placeholder="Pesquisar álbuns..."
-        >
-        <label for="album-selecionado">
-          Selecione um álbum:
-        </label>
-        <select
-            id="album-selecionado"
-            name="album"
-            required
-        >
-        <option value="">
-          Escolha um álbum
-        </option>
-      </select>
-      <p>
-        <label for="photo">Adicione uma capa:</label>
-        <input type="file" name="photo" id="photo">
-      </p>
-        <p>
-          <label for="descricao">Descricao de Foto:</label>
-          <input type="text" id="descricao" name="descricao">
-        </p>
-        <button type="submit"> Adicionar nova foto</button>
-      </form>
-    </div>
-
-    <!-- Modal Album -->
-    <div class="modal" id="modal-album" hidden>
-      <header class="modal-cabecalho">
-        <h2>Criar Novo album</h2>
-        <p>
-          Crie um espaço para reunir suas fotos
-          e guardar seus momentos.
-        </p>
-        <button
-            type="submit"
-            class="modal-fechar"
-            aria-label="Fechar janela"
-            data-fechar-modal="modal-foto"
-        >
-          &times;
-        </button>
-      </header>
-
-      <form action="" method="post" id="form-album">
-        <label for="name-album">
-          Nome do Album
-        </label>
-        <input
-            type="text"
-            id="name-album"
-            placeholder="Adicione um nome ao album"
-        >
-      <p>
-        <label for="photo-a">Adicione uma capa ao album:</label>
-        <input type="file" name="photo" id="photo-a">
-      </p>
-        <p>
-          <label for="descricao-a">Descricao de Album:</label>
-          <input type="text" id="descricao-a" name="descricao">
-        </p>
-        <button type="submit"> Adicionar novo album</button>
-      </form>
-    </div>
   </main>
-  
-  <footer>
-      <p>Um espaço que orbita em você, então seja mais você</p>
-      <p>J.pyter</p>
+
+  <dialog class="modal" id="modal-foto" aria-labelledby="titulo-modal-foto">
+    <header class="modal-cabecalho">
+      <h2 id="titulo-modal-foto">Adicionar foto</h2>
+      <p>Adicione uma foto e associe-a a um álbum da sua galeria.</p>
+      <button type="button" class="modal-fechar" aria-label="Fechar janela" data-fechar-modal="modal-foto">&times;</button>
+    </header>
+    <form id="form-foto" method="post" enctype="multipart/form-data">
+      <div class="campo">
+        <label for="foto">Foto</label>
+        <input type="file" id="foto" name="foto" accept="image/*" required>
+      </div>
+      <div class="campo">
+        <label for="buscar-album">Buscar álbum</label>
+        <input type="search" id="buscar-album" name="buscar-album" placeholder="Pesquisar álbuns...">
+      </div>
+      <div class="campo">
+        <label for="album-selecionado">Álbum</label>
+        <select id="album-selecionado" name="album" required>
+          <option value="" selected disabled>Escolha um álbum</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="descricao-foto">Descrição da foto</label>
+        <input type="text" id="descricao-foto" name="descricao">
+      </div>
+      <button type="submit">Adicionar foto</button>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="modal-album" aria-labelledby="titulo-modal-album">
+    <header class="modal-cabecalho">
+      <h2 id="titulo-modal-album">Criar novo álbum</h2>
+      <p>Crie um espaço para reunir suas fotos e guardar seus momentos.</p>
+      <button type="button" class="modal-fechar" aria-label="Fechar janela" data-fechar-modal="modal-album">&times;</button>
+    </header>
+    <form id="form-album" method="post" enctype="multipart/form-data">
+      <div class="campo">
+        <label for="name-album">Nome do álbum</label>
+        <input type="text" id="name-album" name="nome" placeholder="Adicione um nome ao álbum" required>
+      </div>
+      <div class="campo">
+        <label for="photo-a">Capa do álbum</label>
+        <input type="file" id="photo-a" name="capa" accept="image/*">
+      </div>
+      <div class="campo">
+        <label for="descricao-a">Descrição do álbum</label>
+        <input type="text" id="descricao-a" name="descricao">
+      </div>
+      <button type="submit">Adicionar álbum</button>
+    </form>
+  </dialog>
+
+  <footer class="rodape">
+    <p>Um espaço que orbita em você, então seja mais você</p>
+    <p><small>&copy; Jpyter</small></p>
   </footer>
 </body>
 </html>

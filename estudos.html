@@ -1,124 +1,129 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Estudos · Jpyter</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estudos · Orbit</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
   <header class="cabecalho">
-      <nav class="navegacao">
-          <img src="..." alt="icon">
-          <ul>
-            <li><a href="home.html">Início</a></li>
-            <li><a href="galeria.html">Galeria</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-            <li><a href="musicas.html">Músicas</a></li>
-            <li><a href="estudos.html">Estudos</a></li>
-            <li><a href="anotacoes.html">Anotações</a></li>
-            <li><a href="calendario.html">Calendário</a></li>
-          </ul>    
-      </nav>
-      <h1>Orbit</h1>
-      <p>Um universo só seu, no seu próprio tempo</p>
+    <nav class="navegacao" aria-label="Principal">
+      <a class="logo" href="home.html">
+        <img src="assets/img/logo.svg" alt="Orbit - página inicial">
+      </a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+      <ul id="menu-principal">
+        <li><a href="home.html">Início</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="musicas.html">Músicas</a></li>
+        <li><a href="estudos.html" aria-current="page">Estudos</a></li>
+        <li><a href="anotacoes.html">Anotações</a></li>
+        <li><a href="calendario.html">Calendário</a></li>
+      </ul>
+    </nav>
+    <p class="titulo-site">Orbit</p>
+    <p class="slogan">Um universo só seu, no seu próprio tempo</p>
   </header>
 
-  <main>
-    <section class="estudos">
-      <h1>Estudos</h1>
-      <button type="submit">Novo módulo</button>
-      <p>tantos modulos</p>
+  <main id="conteudo">
+    <section class="estudos" aria-labelledby="titulo-estudos">
+      <h1 id="titulo-estudos">Estudos</h1>
+      <button type="button" data-abrir-modal="modal-modulo">Novo módulo</button>
+      <p>Total de módulos: <span id="total-modulos">0</span></p>
+
+
+      <form class="barra-ferramentas" role="search" aria-label="Pesquisar e ordenar módulos">
+        <div class="campo campo-busca">
+          <label for="busca-estudos">Pesquisar</label>
+          <input type="search" id="busca-estudos" name="busca" placeholder="Digite para buscar...">
+        </div>
+        <div class="campo">
+          <label for="ordem-estudos">Ordenar por</label>
+          <select id="ordem-estudos" name="ordem"><option>Mais recentes</option><option>Nome (A–Z)</option></select>
+        </div>
+      </form>
+      <p class="resultado" role="status">Exibindo 1 item</p>
+      <p class="mensagem mensagem-vazio" hidden>Nenhum resultado encontrado. Tente outro termo de busca.</p>
+
       <ul>
+        <!-- repita o <li> para cada módulo -->
         <li>
           <article>
-            <img src="img/" alt="Capa">
+            <img src="assets/img/placeholder.svg" alt="Capa do módulo Título do módulo">
             <h2>Título do módulo</h2>
             <p>Descrição</p>
-            <button>Entrar em modulo</button>
+            <button type="button" data-abrir-modal="modal-list-conteudos">Abrir módulo</button>
+            <div class="acoes">
+              <button type="button" class="btn-secundario">Editar</button>
+              <button type="button" class="btn-perigo">Excluir</button>
+            </div>
+
           </article>
         </li>
       </ul>
     </section>
   </main>
 
-  <!-- Novo modulo -->
-  <div class="modal" id="modal-modulo" hidden>
+  <dialog class="modal" id="modal-modulo" aria-labelledby="titulo-modal-modulo">
     <header class="modal-cabecalho">
-      <h2>Adicione um novo modulo</h2>
-      <button
-          type="submit"
-          class="modal-fechar"
-      >
-        &times;
-      </button>
+      <h2 id="titulo-modal-modulo">Adicione um novo módulo</h2>
+      <button type="button" class="modal-fechar" aria-label="Fechar janela" data-fechar-modal="modal-modulo">&times;</button>
     </header>
-
-    <form action="" method="post" id="form-modulo">
-      <label for="capa-modulo">Adicione uma capa ao seu modulo:</label>
-      <input type="file" name="capa-modulo" id="capa-modulo"> 
-      <p>
-        <label for="n-modulo">Nome do modulo:</label>
-        <input type="text" name="modulo" id="n-modulo">
-      </p>
-      <p>
-        <label for="descricao-m">Descricao do modulo:</label>
+    <form id="form-modulo" method="post" enctype="multipart/form-data">
+      <div class="campo">
+        <label for="capa-modulo">Capa do módulo</label>
+        <input type="file" id="capa-modulo" name="capa-modulo" accept="image/*">
+      </div>
+      <div class="campo">
+        <label for="n-modulo">Nome do módulo</label>
+        <input type="text" id="n-modulo" name="modulo" required>
+      </div>
+      <div class="campo">
+        <label for="descricao-m">Descrição do módulo</label>
         <input type="text" id="descricao-m" name="descricao-m">
-      </p>
-      <button type="submit"> Adicionar novo modulo</button>
+      </div>
+      <button type="submit">Adicionar módulo</button>
     </form>
-  </div>
+  </dialog>
 
-  <div class="modal" id="modal-list-conteudos" hidden>
+  <dialog class="modal" id="modal-list-conteudos" aria-labelledby="titulo-modal-list-conteudos">
     <header class="modal-cabecalho">
-      <h2>modulo "nome do modulo"</h2>
-      <button
-          type="submit"
-          class="modal-voltar"
-      >
-        &backcong;;
-      </button>
+      <button type="button" class="modal-voltar" aria-label="Voltar" data-fechar-modal="modal-list-conteudos">&larr;</button>
+      <h2 id="titulo-modal-list-conteudos">Módulo "Nome do módulo"</h2>
     </header>
-    <main class="list-documentos">
-      <h2>Album tal</h2>
-      <ul>
-        <ul>
-          <li>
-            <article>
-              <img src="img/" alt="Capa">
-              <h2>Título do módulo</h2>
-              <p>Descrição</p>
-              <button>Entrar em modulo</button>
-            </article>
-          </li>
-        </ul>
-        <li>arquivo 1</li>
-      </ul>
-    </main>
-  </div>
+    <div class="list-documentos">
+      <ol>
+        <!-- repita o <li> para cada conteúdo -->
+        <li>
+          <article>
+            <h3>Título do conteúdo</h3>
+            <p>Descrição</p>
+            <button type="button" data-abrir-modal="modal-conteudo-modulo">Abrir conteúdo</button>
+          </article>
+        </li>
+      </ol>
+    </div>
+  </dialog>
 
-  <div class="modal" id="modal-conteudo-modulo" hidden>
+  <dialog class="modal" id="modal-conteudo-modulo" aria-labelledby="titulo-modal-conteudo-modulo">
     <header class="modal-cabecalho">
-      <h2>Documento tal</h2>
-      <button
-          type="submit"
-          class="modal-fechar"
-      >
-        &times;
-      </button>
+      <h2 id="titulo-modal-conteudo-modulo">Nome do documento</h2>
+      <button type="button" class="modal-fechar" aria-label="Fechar janela" data-fechar-modal="modal-conteudo-modulo">&times;</button>
     </header>
-    <article>
-        <h2>Nome</h2>
-        <img src="..." alt="">
-        <p>Detalhes</p>
-      </article>
-  </div>
+    <article class="conteudo-modulo">
+      <img src="assets/img/placeholder.svg" alt="Imagem do documento">
+      <p>Detalhes</p>
+    </article>
+  </dialog>
 
-  <footer>
-      <p>Um espaço que orbita em você, então seja mais você</p>
-      <p>J.pyter</p>
+  <footer class="rodape">
+    <p>Um espaço que orbita em você, então seja mais você</p>
+    <p><small>&copy; Jpyter</small></p>
   </footer>
-
-  <script src="js/main.js"></script>
 </body>
 </html>

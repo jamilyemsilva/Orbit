@@ -1,146 +1,163 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Músicas · Jpyter</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews · Orbit</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="js/main.js" defer></script>
+  <script src="js/reviews.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
   <header class="cabecalho">
-      <nav class="navegacao">
-          <img src="..." alt="icon">
-          <ul>
-            <li><a href="home.html">Início</a></li>
-            <li><a href="galeria.html">Galeria</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-            <li><a href="musicas.html">Músicas</a></li>
-            <li><a href="estudos.html">Estudos</a></li>
-            <li><a href="anotacoes.html">Anotações</a></li>
-            <li><a href="calendario.html">Calendário</a></li>
-          </ul>    
-      </nav>
-      <h1>Orbit</h1>
-      <p>Um universo só seu, no seu próprio tempo</p>
+    <nav class="navegacao" aria-label="Principal">
+      <a class="logo" href="home.html">
+        <img src="assets/img/logo.svg" alt="Orbit - página inicial">
+      </a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+      <ul id="menu-principal">
+        <li><a href="home.html">Início</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="reviews.html" aria-current="page">Reviews</a></li>
+        <li><a href="musicas.html">Músicas</a></li>
+        <li><a href="estudos.html">Estudos</a></li>
+        <li><a href="anotacoes.html">Anotações</a></li>
+        <li><a href="calendario.html">Calendário</a></li>
+      </ul>
+    </nav>
+    <p class="titulo-site">Orbit</p>
+    <p class="slogan">Um universo só seu, no seu próprio tempo</p>
   </header>
 
-  <main>
-    <section id="musicas">
-      <h2>Músicas</h2>
-      <button type="submit">Nova música</button>
-      <button type="submit">Novo album</button>
+  <main id="conteudo">
+    <section id="reviews" aria-labelledby="titulo-reviews">
+      <h1 id="titulo-reviews">Reviews</h1>
 
-      <section class="banner-musica">
-        top atual das musicas ouvidas
-      </section>
-      <h2>Seus albuns de música</h2>
-      <section class="albuns-musica">
-        <img src="img/" alt="Capa">
-        <h3>Nome</h3>
-        <button type="submit">play</button>
-      </section>
+      <div class="filtros" role="group" aria-label="Filtrar por tipo">
+        <button type="button" data-filtro="todos" aria-pressed="true">Tudo</button>
+        <button type="button" data-filtro="livro" aria-pressed="false">Livros</button>
+        <button type="button" data-filtro="audiovisual" aria-pressed="false">Filmes/Séries</button>
+      </div>
+      <button type="button" data-abrir-modal="modal-review">Nova review</button>
+
+      <form class="barra-ferramentas" role="search" aria-label="Pesquisar e ordenar reviews" onsubmit="return false">
+        <div class="campo campo-busca">
+          <label for="busca-reviews">Pesquisar por título ou autor</label>
+          <input type="search" id="busca-reviews" name="busca" placeholder="Digite para buscar...">
+        </div>
+        <div class="campo">
+          <label for="ordem-reviews">Ordenar por</label>
+          <select id="ordem-reviews" name="ordem">
+            <option value="recentes">Mais recentes</option>
+            <option value="antigas">Mais antigas</option>
+            <option value="titulo">Título (A–Z)</option>
+            <option value="avaliacao">Maior avaliação</option>
+          </select>
+        </div>
+      </form>
+
+      <p class="mensagem mensagem-sucesso" id="feedback-review" role="status" hidden></p>
+      <p class="resultado" id="resultado-reviews" role="status"></p>
+      <p class="mensagem mensagem-vazio" id="vazio-reviews" hidden></p>
+
+      <ul class="lista-reviews" id="lista-reviews"></ul>
     </section>
   </main>
 
-  <!-- Nova Musica -->
-  <div class="modal" id="modal-musica" hidden>
+  <dialog class="modal" id="modal-review" aria-labelledby="titulo-modal-review">
     <header class="modal-cabecalho">
-        <h2>Adicione nova música</h2>
-        <button
-            type="submit"
-            class="modal-fechar"
-            aria-label="Fechar janela"
-            data-fechar-modal="modal-foto"
-        >
-          &times;
-        </button>
-      </header>
+      <h2 id="titulo-modal-review">Adicione uma nova review</h2>
+      <p>Apresente sua crítica.</p>
+      <button type="button" class="modal-fechar" aria-label="Fechar janela" data-fechar-modal="modal-review">&times;</button>
+    </header>
+    <form id="form-review" method="post" novalidate>
+      <input type="hidden" id="review-id" name="id">
+      <input type="hidden" id="capa-url" name="capa-url">
+      <input type="hidden" id="fonte" name="fonte">
 
-      <form action="" method="post" id="form-musica">
-        <label for="capa-musica">Adicione uma capa a sua musica:</label>
-        <input type="file" name="capa-musica" id="capa-musica"> 
-        <p>
-          <label for="n-musica">Nome da música:</label>
-          <input type="text" name="n-musica" id="n-musica">
-        </p>
-        <p>
-          <label for="avaliacao">Avaliação de filme ou serie</label>
-          <input type="number" id="avaliacao" name="avaliacao">
-        </p>
-        <label for="tipo-album">
-          Selecione para qual album você deseja envia-la:
-        </label>
-        <select
-            id="tipo-album"
-            name="tipo-album"
-            required
-        >
-          <option value="">
-            em aberto
-          </option>
+      <div class="campo">
+        <label for="tipo-review">Tipo de review</label>
+        <select id="tipo-review" name="tipo-review" required>
+          <option value="" selected disabled>Selecione o tipo</option>
+          <option value="filme">Filme</option>
+          <option value="serie">Série</option>
+          <option value="livro">Livro</option>
         </select>
-        <p>
-          <label for="descricao">Descricao da música:</label>
-          <input type="text" id="descricao" name="descricao">
-        </p>
-        <button type="submit"> Adicionar nova musica ao album</button>
-      </form>
-  </div>
+      </div>
 
+      <fieldset class="busca-api">
+        <legend>Buscar em uma base pública (opcional)</legend>
+        <p class="ajuda" id="ajuda-api">Escolha o tipo acima: livros usam a Open Library, séries usam a TVmaze e filmes usam a iTunes Search.</p>
+        <div class="busca-api-linha">
+          <input type="search" id="busca-api" aria-label="Termo para buscar" aria-describedby="ajuda-api" placeholder="Ex.: Dom Casmurro">
+          <button type="button" id="btn-busca-api" class="btn-secundario">Buscar</button>
+        </div>
+        <p class="mensagem mensagem-info" id="status-api" role="status" hidden></p>
+        <ul class="resultados-api" id="resultados-api"></ul>
+      </fieldset>
 
-  <!-- Novo album -->
-  <div class="modal" id="modal-album-musica" hidden>
-    <header class="modal-cabecalho">
-      <h2>Adicione um novo album</h2>
-      <button
-          type="submit"
-          class="modal-fechar"
-          aria-label="Fechar janela"
-          data-fechar-modal="modal-foto"
-      >
-        &times;
-      </button>
-    </header>
-
-    <form action="" method="post" id="form-album">
-      <label for="capa-album">Adicione uma capa ao seu album:</label>
-      <input type="file" name="capa-album" id="capa-album"> 
-      <p>
-        <label for="n-album">Nome do album:</label>
-        <input type="text" name="n-album" id="n-album">
-      </p>
-      <p>
-        <label for="descricao-a">Descricao do album:</label>
-        <input type="text" id="descricao-a" name="descricao-a">
-      </p>
-      <button type="submit"> Adicionar novo album</button>
+      <div class="campo">
+        <label for="capa-review">Capa (arquivo)</label>
+        <input type="file" id="capa-review" name="capa-review" accept="image/*">
+        <div class="previa-capa" id="area-previa" hidden>
+          <img id="previa-capa" alt="Prévia da capa selecionada">
+          <button type="button" id="remover-capa" class="btn-secundario">Remover capa</button>
+        </div>
+      </div>
+      <div class="campo">
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo" maxlength="120" required>
+      </div>
+      <div class="campo">
+        <label for="autor">Autor / diretor(a)</label>
+        <input type="text" id="autor" name="autor" maxlength="120">
+      </div>
+      <div class="campo">
+        <label for="ano">Ano</label>
+        <input type="number" id="ano" name="ano" min="1000" max="2100" step="1">
+      </div>
+      <div class="campo">
+        <label for="avaliacao">Avaliação (0 a 5)</label>
+        <input type="number" id="avaliacao" name="avaliacao" min="0" max="5" step="1" required>
+      </div>
+      <div class="campo">
+        <label for="critica">Sua crítica</label>
+        <textarea id="critica" name="critica" rows="4" maxlength="1500"></textarea>
+      </div>
+      <p class="mensagem mensagem-erro" id="erro-review" role="alert" hidden></p>
+      <button type="submit" id="btn-salvar-review">Adicionar review</button>
     </form>
-  </div>
+  </dialog>
 
-  <!-- Lista de musicas no album -->
-  <div class="modal" id="modal-list-musica" hidden>
+  <dialog class="modal" id="modal-detalhe-review" aria-labelledby="titulo-detalhe-review">
     <header class="modal-cabecalho">
-      <h2>Album "nome do album"</h2>
-      <button
-          type="submit"
-          class="modal-voltar"
-      >
-        &backcong;;
-      </button>
+      <h2 id="titulo-detalhe-review">Detalhes</h2>
+      <button type="button" class="modal-fechar" aria-label="Fechar janela" data-fechar-modal="modal-detalhe-review">&times;</button>
     </header>
-    <main class="list-musica">
-      <h2>Album tal</h2>
-      <ul>
-        <li>musicas</li>
-      </ul>
-    </main>
-  </div>
+    <div class="modal-conteudo" id="conteudo-detalhe-review"></div>
+    <div class="acoes">
+      <button type="button" class="btn-secundario" id="detalhe-editar">Editar</button>
+      <button type="button" class="btn-perigo" id="detalhe-excluir">Excluir</button>
+    </div>
+  </dialog>
 
-  <footer>
-      <p>Um espaço que orbita em você, então seja mais você</p>
-      <p>J.pyter</p>
+  <dialog class="modal" id="modal-excluir-review" aria-labelledby="titulo-excluir-review">
+    <header class="modal-cabecalho">
+      <h2 id="titulo-excluir-review">Excluir review?</h2>
+      <button type="button" class="modal-fechar" aria-label="Fechar janela" data-fechar-modal="modal-excluir-review">&times;</button>
+    </header>
+    <p id="texto-excluir-review"></p>
+    <div class="acoes">
+      <button type="button" class="btn-secundario" data-fechar-modal="modal-excluir-review">Cancelar</button>
+      <button type="button" class="btn-perigo" id="confirmar-excluir-review">Excluir</button>
+    </div>
+  </dialog>
+
+  <footer class="rodape">
+    <p>Um espaço que orbita em você, então seja mais você</p>
+    <p><small>&copy; Jpyter</small></p>
   </footer>
-
-  <script src="js/main.js"></script>
 </body>
 </html>

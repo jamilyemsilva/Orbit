@@ -1,78 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Anotações · Jpyter</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anotações · Orbit</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
   <header class="cabecalho">
-      <nav class="navegacao">
-          <img src="..." alt="icon">
-          <ul>
-            <li><a href="home.html">Início</a></li>
-            <li><a href="galeria.html">Galeria</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-            <li><a href="musicas.html">Músicas</a></li>
-            <li><a href="estudos.html">Estudos</a></li>
-            <li><a href="anotacoes.html">Anotações</a></li>
-            <li><a href="calendario.html">Calendário</a></li>
-          </ul>    
-      </nav>
-      <h1>Orbit</h1>
-      <p>Um universo só seu, no seu próprio tempo</p>
+    <nav class="navegacao" aria-label="Principal">
+      <a class="logo" href="home.html">
+        <img src="assets/img/logo.svg" alt="Orbit - página inicial">
+      </a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+      <ul id="menu-principal">
+        <li><a href="home.html">Início</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="musicas.html">Músicas</a></li>
+        <li><a href="estudos.html">Estudos</a></li>
+        <li><a href="anotacoes.html" aria-current="page">Anotações</a></li>
+        <li><a href="calendario.html">Calendário</a></li>
+      </ul>
+    </nav>
+    <p class="titulo-site">Orbit</p>
+    <p class="slogan">Um universo só seu, no seu próprio tempo</p>
   </header>
 
-  <main>
-    <section id="reviews">
-      <h2>Anotações</h2>
-      <button type="submit" class="nova-anotacao">Nova anotação</button>
-      <p>tantan anotacoes</p>
+  <main id="conteudo">
+    <section id="anotacoes" aria-labelledby="titulo-anotacoes">
+      <h1 id="titulo-anotacoes">Anotações</h1>
+      <button type="button" class="nova-anotacao" data-abrir-modal="modal-anotacao">Nova anotação</button>
+      <p>Total de anotações: <span id="total-anotacoes">0</span></p>
+
+
+      <form class="barra-ferramentas" role="search" aria-label="Pesquisar e ordenar anotações">
+        <div class="campo campo-busca">
+          <label for="busca-anotacoes">Pesquisar</label>
+          <input type="search" id="busca-anotacoes" name="busca" placeholder="Digite para buscar...">
+        </div>
+        <div class="campo">
+          <label for="ordem-anotacoes">Ordenar por</label>
+          <select id="ordem-anotacoes" name="ordem"><option>Mais recentes</option><option>Mais antigas</option><option>Título (A–Z)</option></select>
+        </div>
+      </form>
+      <p class="resultado" role="status">Exibindo 1 item</p>
+      <p class="mensagem mensagem-vazio" hidden>Nenhum resultado encontrado. Tente outro termo de busca.</p>
+
       <ul>
+        <!-- repita o <li> para cada anotação -->
         <li>
           <article>
             <h2>Nome</h2>
-            <time datetime="">Data</time>
+            <time datetime="2026-10-13">13 de outubro de 2026</time>
             <p>Descrição</p>
+            <div class="acoes">
+              <button type="button" class="btn-secundario">Editar</button>
+              <button type="button" class="btn-perigo">Excluir</button>
+            </div>
           </article>
         </li>
       </ul>
     </section>
   </main>
 
-  <!-- Nova Anotação -->
-   <div class="modal" id="modal-anotacao" hidden>
+  <dialog class="modal" id="modal-anotacao" aria-labelledby="titulo-modal-anotacao">
     <header class="modal-cabecalho">
-        <h2>Adicione uma nova anotação</h2>
-        <button
-            type="submit"
-            class="modal-fechar"
-            aria-label="Fechar janela"
-            data-fechar-modal="modal-foto"
-        >
-          &times;
-        </button>
-      </header>
+      <h2 id="titulo-modal-anotacao">Adicione uma nova anotação</h2>
+      <button type="button" class="modal-fechar" aria-label="Fechar janela" data-fechar-modal="modal-anotacao">&times;</button>
+    </header>
+    <form id="form-anotacao" method="post" enctype="multipart/form-data">
+      <div class="campo">
+        <label for="n-anotacao">Título</label>
+        <input type="text" id="n-anotacao" name="titulo" required>
+      </div>
+      <div class="campo">
+        <label for="descricao-anotacao">Descrição</label>
+        <textarea id="descricao-anotacao" name="descricao" rows="5"></textarea>
+      </div>
+      <div class="campo">
+        <label for="arquivo">Anexar arquivo</label>
+        <input type="file" id="arquivo" name="arquivo">
+      </div>
+      <button type="submit">Adicionar anotação</button>
+    </form>
+  </dialog>
 
-      <form action="" method="post" id="form-anotacao">
-        <p>
-          <label for="n-anotacao">Titulo:</label>
-          <input type="text" name="n-anotacao" id="n-anotacao">
-        </p>
-        <p>
-          <label for="descricao">Descricao</label>
-          <input type="text" id="descricao" name="descricao">
-          <input type="file" name="arquivo" id="arquivo">
-        </p>
-        <button type="submit"> Adicionar nova anotacao</button>
-      </form>
-  </div>
-
-  <footer>
-      <p>Um espaço que orbita em você, então seja mais você</p>
-      <p>J.pyter</p>
+  <footer class="rodape">
+    <p>Um espaço que orbita em você, então seja mais você</p>
+    <p><small>&copy; Jpyter</small></p>
   </footer>
-
 </body>
 </html>

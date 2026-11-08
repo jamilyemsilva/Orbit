@@ -1,54 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Calendário · Jpyter</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendário · Orbit</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
- <header class="cabecalho">
-      <nav class="navegacao">
-          <img src="..." alt="icon">
-          <ul>
-            <li><a href="home.html">Início</a></li>
-            <li><a href="galeria.html">Galeria</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-            <li><a href="musicas.html">Músicas</a></li>
-            <li><a href="estudos.html">Estudos</a></li>
-            <li><a href="anotacoes.html">Anotações</a></li>
-            <li><a href="calendario.html">Calendário</a></li>
-          </ul>    
-      </nav>
-      <h1>Orbit</h1>
-      <p>Um universo só seu, no seu próprio tempo</p>
+  <header class="cabecalho">
+    <nav class="navegacao" aria-label="Principal">
+      <a class="logo" href="home.html">
+        <img src="assets/img/logo.svg" alt="Orbit - página inicial">
+      </a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+      <ul id="menu-principal">
+        <li><a href="home.html">Início</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="musicas.html">Músicas</a></li>
+        <li><a href="estudos.html">Estudos</a></li>
+        <li><a href="anotacoes.html">Anotações</a></li>
+        <li><a href="calendario.html" aria-current="page">Calendário</a></li>
+      </ul>
+    </nav>
+    <p class="titulo-site">Orbit</p>
+    <p class="slogan">Um universo só seu, no seu próprio tempo</p>
   </header>
 
-  <main>
-    <section id="calendario">
-      <h2>Calendário</h2>
-      <button>Diário</button> <button>Semanal</button> <button>Mensal</button>
-      <section id="card-eventos">
+  <main id="conteudo">
+    <section id="calendario" aria-labelledby="titulo-calendario">
+      <h1 id="titulo-calendario">Calendário</h1>
+      <button type="button" data-abrir-modal="modal-evento">Novo evento</button>
+
+      <section class="proximos-eventos" aria-labelledby="titulo-proximos">
+        <h2 id="titulo-proximos">Próximos eventos</h2>
+        <ul>
+          <!-- repita o <li> para cada evento -->
+          <li>
+            <article>
+              <h3>Título do evento</h3>
+              <p><time datetime="2026-10-13T09:00">13/10 às 09:00</time></p>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+      <section id="card-eventos" aria-labelledby="titulo-agenda">
+        <h2 id="titulo-agenda">Agenda</h2>
+        <div class="filtros" role="group" aria-label="Modo de exibição">
+          <button type="button" aria-pressed="false">Diário</button>
+          <button type="button" aria-pressed="false">Semanal</button>
+          <button type="button" aria-pressed="true">Mensal</button>
+        </div>
         <table>
-          <thead><tr><th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th></tr></thead>
-          <tbody></tbody>
+          <caption>Outubro de 2026</caption>
+          <thead>
+            <tr><th scope="col" abbr="Domingo">Dom</th><th scope="col" abbr="Segunda-feira">Seg</th><th scope="col" abbr="Terça-feira">Ter</th><th scope="col" abbr="Quarta-feira">Qua</th><th scope="col" abbr="Quinta-feira">Qui</th><th scope="col" abbr="Sexta-feira">Sex</th><th scope="col" abbr="Sábado">Sáb</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="fora"></td><td class="fora"></td><td class="fora"></td><td class="fora"></td><td><span class="dia">1</span></td><td><span class="dia">2</span></td><td><span class="dia">3</span></td></tr>
+            <tr><td><span class="dia">4</span></td><td><span class="dia">5</span></td><td><span class="dia">6</span></td><td><span class="dia">7</span></td><td><span class="dia">8</span></td><td><span class="dia">9</span></td><td><span class="dia">10</span></td></tr>
+            <tr><td><span class="dia">11</span></td><td><span class="dia">12</span></td><td><span class="dia">13</span><span class="evento" style="--cor-evento:#80501A">09:00 Título do evento</span></td><td><span class="dia">14</span></td><td><span class="dia">15</span></td><td><span class="dia">16</span></td><td><span class="dia">17</span></td></tr>
+            <tr><td class="hoje" aria-current="date"><span class="dia">18</span></td><td><span class="dia">19</span></td><td><span class="dia">20</span></td><td><span class="dia">21</span></td><td><span class="dia">22</span><span class="evento" style="--cor-evento:#606443">Revisar estudos</span></td><td><span class="dia">23</span></td><td><span class="dia">24</span></td></tr>
+            <tr><td><span class="dia">25</span></td><td><span class="dia">26</span></td><td><span class="dia">27</span></td><td><span class="dia">28</span></td><td><span class="dia">29</span></td><td><span class="dia">30</span></td><td><span class="dia">31</span></td></tr>
+            <!-- as próximas semanas serão geradas depois (JavaScript) -->
+          </tbody>
         </table>
       </section>
-      <form id="evento">
-        <input type="date" name="data">
-        <input type="text" name="titulo">
-        <textarea name="descricao"></textarea>
-        <input type="color" name="cor">
-        <button type="submit">Salvar</button> <button type="button">Excluir</button>
-      </form>
     </section>
   </main>
 
-  <footer>
-      <p>Um espaço que orbita em você, então seja mais você</p>
-      <p>J.pyter</p>
-  </footer>
+  <dialog class="modal" id="modal-evento" aria-labelledby="titulo-modal-evento">
+    <header class="modal-cabecalho">
+      <h2 id="titulo-modal-evento">Novo evento</h2>
+      <button type="button" class="modal-fechar" aria-label="Fechar janela" data-fechar-modal="modal-evento">&times;</button>
+    </header>
+    <form id="form-evento" method="post">
+      <div class="campo">
+        <label for="evento-data">Data</label>
+        <input type="date" id="evento-data" name="data" required>
+      </div>
+      <div class="campo">
+        <label for="evento-titulo">Título</label>
+        <input type="text" id="evento-titulo" name="titulo" required>
+      </div>
+      <div class="campo">
+        <label for="evento-descricao">Descrição</label>
+        <textarea id="evento-descricao" name="descricao" rows="4"></textarea>
+      </div>
+      <div class="campo">
+        <label for="evento-cor">Cor do evento</label>
+        <input type="color" id="evento-cor" name="cor">
+      </div>
+      <button type="submit">Salvar</button>
+      <button type="button">Excluir</button>
+    </form>
+  </dialog>
 
+  <footer class="rodape">
+    <p>Um espaço que orbita em você, então seja mais você</p>
+    <p><small>&copy; Jpyter</small></p>
+  </footer>
 </body>
 </html>

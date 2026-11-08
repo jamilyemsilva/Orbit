@@ -1,81 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeria Album</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Álbum · Orbit</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-    <header class="cabecalho">
-        <nav class="navegacao">
-            <img src="..." alt="icon">
-            <ul>
-              <li><a href="home.html">Início</a></li>
-              <li><a href="galeria.html">Galeria</a></li>
-              <li><a href="reviews.html">Reviews</a></li>
-              <li><a href="musicas.html">Músicas</a></li>
-              <li><a href="estudos.html">Estudos</a></li>
-              <li><a href="anotacoes.html">Anotações</a></li>
-              <li><a href="calendario.html">Calendário</a></li>
-            </ul>    
-        </nav>
-        <h1>Orbit</h1>
-        <p>Um universo só seu, no seu próprio tempo</p>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="cabecalho">
+    <nav class="navegacao" aria-label="Principal">
+      <a class="logo" href="home.html">
+        <img src="assets/img/logo.svg" alt="Orbit - página inicial">
+      </a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+      <ul id="menu-principal">
+        <li><a href="home.html">Início</a></li>
+        <li><a href="galeria.html" aria-current="page">Galeria</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="musicas.html">Músicas</a></li>
+        <li><a href="estudos.html">Estudos</a></li>
+        <li><a href="anotacoes.html">Anotações</a></li>
+        <li><a href="calendario.html">Calendário</a></li>
+      </ul>
+    </nav>
+    <p class="titulo-site">Orbit</p>
+    <p class="slogan">Um universo só seu, no seu próprio tempo</p>
+  </header>
+
+  <main id="conteudo">
+    <a class="voltar" href="galeria.html">&larr; Voltar para a galeria</a>
+
+    <section class="banner-album" aria-labelledby="titulo-album">
+      <h1 id="titulo-album">Noites frias, vinho e jazz</h1>
+      <p>
+        Um refúgio entre luzes baixas, conversas tranquilas e
+        melodias que parecem desacelerar o tempo. Pequenos momentos
+        para apreciar a noite, sem pressa de chegar ao amanhã.
+      </p>
+      <button type="button" data-abrir-modal="modal-foto-album">Adicionar foto</button>
+    </section>
+
+    <section class="photos" aria-labelledby="titulo-fotos-album">
+      <h2 id="titulo-fotos-album" class="visually-hidden">Fotos do álbum</h2>
+      <ul>
+        <!-- repita o <li> para cada foto -->
+        <li>
+          <button type="button" data-abrir-modal="modal-card-photo">
+            <img src="assets/img/placeholder.svg" alt="Dump October">
+          </button>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <dialog class="modal" id="modal-foto-album" aria-labelledby="titulo-modal-foto-album">
+    <header class="modal-cabecalho">
+      <h2 id="titulo-modal-foto-album">Adicionar foto ao álbum</h2>
+      <button type="button" class="modal-fechar" aria-label="Fechar janela" data-fechar-modal="modal-foto-album">&times;</button>
     </header>
-    
-    <main>
-        <section class="banner-album">
-            <a href="galeria.html">Voltar</a>
-            <article>
-                <h2>
-                    Noites frias, vinho e jazz
-                </h2>
-                <p>
-                   Um refúgio entre luzes baixas, conversas tranquilas e 
-                   melodias que parecem desacelerar o tempo. Pequenos momentos 
-                   para apreciar a noite, sem pressa de chegar ao amanhã.
-                </p>
-                <button type="submit">Adicionar Foto</button>
-            </article>
-        </section>
+    <form id="form-foto-album" method="post" enctype="multipart/form-data">
+      <div class="campo">
+        <label for="foto-album">Foto</label>
+        <input type="file" id="foto-album" name="foto" accept="image/*" required>
+      </div>
+      <div class="campo">
+        <label for="descricao-foto-album">Descrição da foto</label>
+        <input type="text" id="descricao-foto-album" name="descricao">
+      </div>
+      <button type="submit">Adicionar foto</button>
+    </form>
+  </dialog>
 
-        <section class="photos">
-            <p>
-                fotos e albuns de fotos aqui
-            </p>
-        </section>
-    </main>
-
-    <div class="modal" id="modal-card-photo" hidden>
-        <header>
-            <button
-                type="submit"
-                class="modal-fechar"
-                aria-label="Fechar janela"
-                data-fechar-modal="modal-foto"
-            >
-            &times;
-            </button>
-            <button
-                type="submit"
-                class="modal-config"
-            >
-            &cap;
-            </button>
-        </header>
-
-        <main>
-            <img src="..." alt="">
-            <h2>Dump October</h2>
-            <p>
-                Um pouco doq ue retratou o meu outubro
-            </p>
-        </main>
+  <dialog class="modal" id="modal-card-photo" aria-labelledby="titulo-modal-card-photo">
+    <header class="modal-cabecalho">
+      <h2 id="titulo-modal-card-photo">Dump October</h2>
+      <button type="button" class="modal-config" aria-label="Opções da foto" aria-haspopup="menu">&#8942;</button>
+      <button type="button" class="modal-fechar" aria-label="Fechar janela" data-fechar-modal="modal-card-photo">&times;</button>
+    </header>
+    <div class="modal-conteudo">
+      <img src="assets/img/placeholder.svg" alt="Dump October">
+      <p>Um pouco do que retratou o meu outubro</p>
     </div>
+  </dialog>
 
-    <footer>
-        <p>Um espaço que orbita em você, então seja mais você</p>
-        <p>J.pyter</p>
-    </footer>
+  <footer class="rodape">
+    <p>Um espaço que orbita em você, então seja mais você</p>
+    <p><small>&copy; Jpyter</small></p>
+  </footer>
 </body>
 </html>

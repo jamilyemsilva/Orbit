@@ -1,52 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sing-in</title>
+  <title>Entrar · Orbit</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
   <main id="conteudo">
+    <h1 class="visually-hidden">Orbit - entrar ou criar conta</h1>
 
-    <section class="login" id="login">
-      <h1>Área de Login</h1>
+    <section class="login" id="login" aria-labelledby="titulo-login">
+      <h2 id="titulo-login">Entrar</h2>
       <div class="formulario">
         <form method="post">
-          <h2>Informe seus dados</h2>
           <div class="campo">
-            <label for="user-email">Username ou e-mail:</label>
-            <input type="text" id="user-email" name="user-email" required>
+            <label for="user-email">Username ou e-mail</label>
+            <input type="text" id="user-email" name="user-email" autocomplete="username" required>
           </div>
           <div class="campo">
-            <label for="password">Senha:</label>
-            <input type="text" id="password" name="password" required>
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" autocomplete="current-password" required>
           </div>
+          <p class="mensagem mensagem-erro" role="alert" hidden>Usuário ou senha incorretos.</p>
           <button type="submit">Entrar</button>
         </form>
-        <p><a href="#cadastro">Não possuo Cadastro</a></p>
+        <p><a href="#cadastro">Não possuo cadastro</a></p>
       </div>
     </section>
 
-    <section class="cadastro" id="cadastro">
-      <h1>Área de Cadastro</h1>
+    <section class="cadastro" id="cadastro" aria-labelledby="titulo-cadastro">
+      <h2 id="titulo-cadastro">Criar conta</h2>
       <div class="formulario">
         <form method="post">
-          <h2>Informe seus dados</h2>
           <div class="campo">
-            <label for="user">Username:</label>
-            <input type="text" id="user" name="user" required>
+            <label for="user">Username</label>
+            <input type="text" id="user" name="user" autocomplete="username" required>
           </div>
           <div class="campo">
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required> 
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
           </div>
           <div class="campo">
-            <label for="password-n">Senha:</label>
-            <input type="text" id="password-n" name="password" required>
+            <label for="password-n">Senha</label>
+            <input type="password" id="password-n" name="password" autocomplete="new-password" minlength="8" required aria-describedby="ajuda-senha">
+            <p class="ajuda" id="ajuda-senha">Use ao menos 8 caracteres.</p>
           </div>
           <button type="submit">Cadastrar-se</button>
         </form>
-          <p><a href="#login">Já possuo conta</a></p>
+        <p><a href="#login">Já possuo conta</a></p>
       </div>
     </section>
   </main>
